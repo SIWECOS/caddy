@@ -1,0 +1,32 @@
+language: generic
+
+dist: trusty
+
+script:
+  - docker build -t caddy .
+
+before_deploy:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+
+deploy:
+  - provider: script
+    skip_cleanup: true
+    on:
+      branch: develop
+    script: >-
+      docker tag caddy siwecos/caddy:develop &&
+      docker push siwecos/caddy:develop
+  - provider: script
+    skip_cleanup: true
+    on:
+      branch: master
+    script: >-
+      docker tag caddy siwecos/caddy:latest &&
+      docker push siwecos/caddy:latest
+  - provider: script
+    skip_cleanup: true
+    on:
+      tags: true
+    script: >-
+      docker tag caddy siwecos/caddy:$TRAVIS_TAG &&
+      docker push siwecos/caddy:$TRAVIS_TAG
