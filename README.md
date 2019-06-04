@@ -1,11 +1,12 @@
 # caddy
 
+![MicroBadger Size](https://img.shields.io/microbadger/image-size/siwecos/caddy.svg?style=for-the-badge)
+![Docker Pulls](https://img.shields.io/docker/pulls/siwecos/caddy.svg?style=for-the-badge)
+[![Main Project](https://img.shields.io/badge/Main%20Project-abiosoft%2Fcaddy--docker-blue.svg?style=for-the-badge)](https://github.com/abiosoft/caddy-docker)
+
 A [Docker](https://docker.com) image for [Caddy](https://caddyserver.com). This image includes [cors](https://caddyserver.com/docs/http.cors), [ipfilter](https://caddyserver.com/docs/http.ipfilter), [realip](https://caddyserver.com/docs/http.realip), [expires](https://caddyserver.com/docs/http.expires) and [cache](https://caddyserver.com/docs/http.cache) plugins.
 
 Plugins can be configured via the [`plugins` build arg](#custom-plugins).
-
-[![](https://images.microbadger.com/badges/image/abiosoft/caddy.svg)](https://microbadger.com/images/abiosoft/caddy "Get your own image badge on microbadger.com")
-[![](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/mholt/caddy/tree/v1.0.0)
 
 Check [abiosoft/caddy:builder](https://github.com/abiosoft/caddy-docker/blob/master/BUILDER.md) for generating cross-platform Caddy binaries.
 
@@ -23,7 +24,7 @@ Caddy may prompt to agree to [Let's Encrypt Subscriber Agreement](https://letsen
 ## Getting Started
 
 ```sh
-$ docker run -d -p 2015:2015 abiosoft/caddy
+$ docker run -d -p 2015:2015 siwecos/caddy
 ```
 
 Point your browser to `http://127.0.0.1:2015`.
@@ -57,7 +58,6 @@ $ docker run -d \
 
 Above, we utilize the `CADDYPATH` environment variable to define a different location inside the container for
 certificates to be stored. This is probably the safest option as it ensures any future docker image changes don't interfere with your ability to save certificates!
-```
 
 ## Usage
 
